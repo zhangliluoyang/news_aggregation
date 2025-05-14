@@ -20,9 +20,7 @@ import time                     # For delay
 TIME_THRESHOLD = datetime.now(timezone.utc) - timedelta(hours=18)
 # List of RSS feeds
 FEED_SOURCES = {
-    "https://feedx.net/rss/rfi.xml": "RFI",
     "https://www.rfi.fr/asie-pacifique/rss": "Radio France Internationale",
-    "https://moxie.foxnews.com/google-publisher/latest.xml": "FoxNews Latest",
     "https://moxie.foxnews.com/google-publisher/world.xml": "FoxNews World",
     "https://asia.nikkei.com/rss/feed/nar?_gl=1*b1iseh*_gcl_aw*R0NMLjE3NDYyOTEzMzguQ2owS0NRandfZGJBQmhDNUFSSXNBQWgyWi1RWGVLUS03YWQzejhLWndKQ2tVS2g5Z0dIM2d2QWl2aHZZYlF2OGdoekpoa0dWaWxpZWhlMGFBZ3FrRUFMd193Y0I.*_gcl_au*NDc5MTk1MzAzLjE3NDUyMjIxNjk.*_ga*MTcyODI3Nzc3OS4xNzQ1MjIyMTY2*_ga_5H36ZEETNT*MTc0NjI5MTMxNy4yLjEuMTc0NjI5MTQ0Ni40MC4wLjgxNTE1NTkxNw..": "Nikkei",
     "https://www.channelnewsasia.com/api/v1/rss-outbound-feed?_format=xml&category=6511": "ChannelNewsAsia",
@@ -136,7 +134,7 @@ def fetch_and_process():
                 article = Article(link)   # Create an Article object from the link
                 article.download()  # save the article's HTML content in memory (not on disk)
                 article.parse()     # extracts the body text, title, and metadata
-                print(f"{article.text[:150]}")
+                # print(f"{article.text[:150]}")
             except Exception as e:
                 logging.error(f"Failed to scrape: {link} ({e})")
 
